@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Cliente - Index";
+}
+
+<h2>Cliente</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label for="Nome">Nome:</label>
+        <input type="text" id="Nome" name="Nome" required />
+    </div>
+    <div>
+        <label for="Email">Email:</label>
+        <input type="email" id="Email" name="Email" required />
+    </div>
+    <div>
+        <label for="Telefone">Telefone:</label>
+        <input type="tel" id="Telefone" name="Telefone" required />
+    </div>
+    <div>
+        <label for="Cidade">Cidade:</label>
+        <input type="text" id="Cidade" name="Cidade" required />
+    </div>
+    <div>
+        <button type="submit">Enviar</button>
+    </div>
+</form>
