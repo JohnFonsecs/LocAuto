@@ -17,5 +17,17 @@ namespace Locacoes.Controllers
         {
             return View(Clientes);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Cliente cliente)
+        {
+            cliente.Id = Clientes.Select(x => x.Id).Max() +1;
+            Clientes.Add(cliente);
+            return RedirectToAction("Index");
+        }
     }
 }

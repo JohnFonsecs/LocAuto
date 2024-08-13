@@ -15,5 +15,17 @@ namespace Locacoes.Controllers
         {
             return View(Fabricantes);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Fabricante fabricante)
+        {
+            fabricante.Id = Fabricantes.Select(x => x.Id).Max() +1;
+            Fabricantes.Add(fabricante);
+            return RedirectToAction("Index");
+        }
     }
 }
