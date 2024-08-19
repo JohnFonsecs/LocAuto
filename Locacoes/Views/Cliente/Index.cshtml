@@ -14,20 +14,12 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cidade)
-            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -35,19 +27,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cidade)
             </td>
             <td>
                 @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
