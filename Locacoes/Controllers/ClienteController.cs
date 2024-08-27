@@ -2,6 +2,8 @@
 using Locacoes.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Locacoes.Controllers
 {
@@ -12,6 +14,10 @@ namespace Locacoes.Controllers
         public ClienteController(LocacoesContext context)
         {
             _context = context;
+        }
+        public bool ClienteExists(long? id)
+        {
+            return _context.Clientes.Any(cli => cli.Id == id);
         }
 
 
@@ -54,11 +60,7 @@ namespace Locacoes.Controllers
         }
         public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var cliente =  await._context.Clientes.SingleOrDefaultAsync(cli => cli.Id == id);
+            var cliente = await _context.Clientes.SingleOrDefaultAsync(cli => cli.Id == id);
             if (cliente == null)
             {
                 return NotFound();
@@ -83,7 +85,7 @@ namespace Locacoes.Controllers
                 }
                 catch(DbUpdateConcurrencyException) 
                 {
-                    if (!ModelState.IsValid)
+                    if (!ClienteExists(cliente.Id))
                     {
                         return NotFound();
                     }

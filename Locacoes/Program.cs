@@ -7,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 var connectionString = builder.Configuration.GetConnectionString("LocAutoConnection");
-
 builder.Services.AddDbContext<LocacoesContext>(options => options.UseSqlServer(connectionString));
 
 var app = builder.Build();
